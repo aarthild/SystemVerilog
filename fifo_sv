@@ -1,0 +1,31 @@
+// Code your testbench here
+// or browse Examples
+class fifo;
+  int intQ[$];
+  function void put(int a);
+    intQ.push_back(a);
+  endfunction
+  function void get(output int a);
+   a=intQ.pop_front();
+  endfunction
+endclass
+
+module tb;
+  fifo q=new();
+  int num;
+  initial begin
+    repeat(5) begin
+      num=$urandom_range(10,30);
+      q.put(num);
+      $display("num=%0d",num);
+    end
+    repeat(5) begin
+      q.get(num);
+      $display("num=%0d",num);
+  end
+  end
+ endmodule 
+      
+      
+    
+  
