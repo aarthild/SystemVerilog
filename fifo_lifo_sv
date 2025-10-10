@@ -1,0 +1,36 @@
+// Code your testbench here
+// or browse Examples
+`define lifo 1
+`define fifo 0
+class fifo_lifo #(bit ds_type=`lifo);
+  int intQ[$];
+  function void put(int a);
+    intQ.push_back(a);
+  endfunction
+  function void get(output int a);
+    if(ds_type==`lifo)
+      a=intQ.pop_back();
+    if(ds_type==`fifo)
+      a=intQ.pop_front();
+  endfunction
+endclass
+
+module tb;
+  fifo_lifo #(.ds_type(`lifo)) q=new();
+  int num;
+  initial begin
+    repeat(5) begin
+      num=$urandom_range(10,30);
+      q.put(num);
+      $display("num=%0d",num);
+    end
+    repeat(5) begin
+      q.get(num);
+      $display("num=%0d",num);
+  end
+  end
+ endmodule 
+      
+      
+    
+  
