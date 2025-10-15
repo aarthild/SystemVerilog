@@ -1,4 +1,4 @@
-//write a constraint for 4bit dynamic arfray with the size of 10 and store the random values into the dynamic array in ascending order and decending vice versa
+
 class sample;
   int i;
   rand bit[3:0]a[];
